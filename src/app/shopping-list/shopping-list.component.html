@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-10">
+        <!-- Note: remember that we are listening to the event that is taking place in our child and considering that event in our local script file  -->
+        <app-shopping-edit></app-shopping-edit>
+        <hr>
+        <ul class="list-group">
+            <a class="list-group-item" 
+            style="cursor: pointer"
+            *ngFor="let ingredient of ingredients"
+            > {{ ingredient.name }} {{ ingredient.amount }}</a>
+        </ul>
+    </div>
+    
+
+</div>
