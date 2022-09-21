@@ -1,6 +1,7 @@
 import { Directive, HostBinding, HostListener } from "@angular/core";
 
 @Directive({
+    //allows for other files to acces this directive 
     selector:'[appDropdown]'
 })
 

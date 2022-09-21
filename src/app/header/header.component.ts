@@ -6,9 +6,8 @@ import { Component, EventEmitter, Output } from "@angular/core";
 })
 export class HeaderComponent { 
     collapsed = true; 
-    @Output() featureSelected = new EventEmitter<string>(); 
     
-    onSelect(feature:string){
-        this.featureSelected.emit(feature);
-    }
+    // // We are allowing this feaure to be emitted from child comp to parent comp --> data passed to app component 
+    // @Output() featureSelected = new EventEmitter<string>(); 
+    
 }
