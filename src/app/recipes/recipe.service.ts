@@ -9,22 +9,24 @@ import { Recipe } from './recipe.model'
 export class RecipeService { 
     recipesChanged = new Subject<Recipe[]>; 
 
-    private recipes: Recipe[] = [
-        new Recipe('A Test Recipe', 
-        'This is simply a test', 
-        'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?resize=960,872?quality=90&webp=true&resize=300,272',
-        [
-            new Ingredient('Meat',1),
-            new Ingredient('Onion',5)
-        ]),
-        new Recipe('Another Test Recipe', 
-        'This is simply a test', 
-        'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?resize=960,872?quality=90&webp=true&resize=300,272',
-        [
-            new Ingredient('Buns',1),
-            new Ingredient('Onion',5)
-        ]) 
-      ]; 
+    // private recipes: Recipe[] = [
+    //     new Recipe('A Test Recipe', 
+    //     'This is simply a test', 
+    //     'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?resize=960,872?quality=90&webp=true&resize=300,272',
+    //     [
+    //         new Ingredient('Meat',1),
+    //         new Ingredient('Onion',5)
+    //     ]),
+    //     new Recipe('Another Test Recipe', 
+    //     'This is simply a test', 
+    //     'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg?resize=960,872?quality=90&webp=true&resize=300,272',
+    //     [
+    //         new Ingredient('Buns',1),
+    //         new Ingredient('Onion',5)
+    //     ]) 
+    //   ]; 
+    
+    private recipes: Recipe[] = []; 
       
     constructor(private slService: ShoppingListService) { }
       
@@ -52,6 +54,11 @@ export class RecipeService {
     
     deleteRecipe(index: number) {
         this.recipes.splice(index, 1); 
+        this.recipesChanged.next(this.recipes.slice());
+    }
+    
+    setRecipes(recipes: Recipe[]) { 
+        this.recipes = recipes;
         this.recipesChanged.next(this.recipes.slice());
     }
 }

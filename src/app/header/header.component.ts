@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
+import { DataStorageService } from "../shared/data-storage.service";
 
 @Component({
     selector: 'app-header',
@@ -9,5 +10,13 @@ export class HeaderComponent {
     
     // // We are allowing this feaure to be emitted from child comp to parent comp --> data passed to app component 
     // @Output() featureSelected = new EventEmitter<string>(); 
+    constructor(private dataStorageService: DataStorageService) {}
     
+    onSaveData() { 
+        this.dataStorageService.storeRecipes();
+    }
+    
+    onFetchData() { 
+        this.dataStorageService.fetchRecipes().subscribe(); 
+    }
 }
