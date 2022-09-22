@@ -37,5 +37,10 @@ export class RecipeDetailComponent implements OnInit {
     //allows user to path to correct webpage relative to this route, which is in this case: http://localhost:61704/recipes/1/
     this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
+  
+  onDeleteRecipe() { 
+    this.recipeService.deleteRecipe(this.id); 
+    this.router.navigate(['/recipes']);
+  }
 
 }
